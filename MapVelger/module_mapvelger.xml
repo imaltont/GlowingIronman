@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mapvelger" default="compile.module.mapvelger">
+  <dirname property="module.mapvelger.basedir" file="${ant.file.module_mapvelger}"/>
+  
+  <property name="module.jdk.home.mapvelger" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mapvelger" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mapvelger" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mapvelger" value="${compiler.args}"/>
+  
+  <property name="mapvelger.output.dir" value="${module.mapvelger.basedir}/out/production/MapVelger"/>
+  <property name="mapvelger.testoutput.dir" value="${module.mapvelger.basedir}/out/test/MapVelger"/>
+  
+  <path id="mapvelger.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mapvelger.module.production.classpath">
+    <path refid="${module.jdk.classpath.mapvelger}"/>
+  </path>
+  
+  <path id="mapvelger.runtime.production.module.classpath">
+    <pathelement location="${mapvelger.output.dir}"/>
+  </path>
+  
+  <path id="mapvelger.module.classpath">
+    <path refid="${module.jdk.classpath.mapvelger}"/>
+    <pathelement location="${mapvelger.output.dir}"/>
+  </path>
+  
+  <path id="mapvelger.runtime.module.classpath">
+    <pathelement location="${mapvelger.testoutput.dir}"/>
+    <pathelement location="${mapvelger.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mapvelger">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mapvelger">
+    <patternset refid="excluded.from.module.mapvelger"/>
+  </patternset>
+  
+  <path id="mapvelger.module.sourcepath">
+    <dirset dir="${module.mapvelger.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mapvelger" depends="compile.module.mapvelger.production,compile.module.mapvelger.tests" description="Compile module MapVelger"/>
+  
+  <target name="compile.module.mapvelger.production" depends="register.custom.compilers" description="Compile module MapVelger; production classes">
+    <mkdir dir="${mapvelger.output.dir}"/>
+    <javac2 destdir="${mapvelger.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mapvelger}/javac">
+      <compilerarg line="${compiler.args.mapvelger}"/>
+      <bootclasspath refid="mapvelger.module.bootclasspath"/>
+      <classpath refid="mapvelger.module.production.classpath"/>
+      <src refid="mapvelger.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mapvelger"/>
+    </javac2>
+    
+    <copy todir="${mapvelger.output.dir}">
+      <fileset dir="${module.mapvelger.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mapvelger.tests" depends="register.custom.compilers,compile.module.mapvelger.production" description="compile module MapVelger; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.mapvelger" description="cleanup module">
+    <delete dir="${mapvelger.output.dir}"/>
+    <delete dir="${mapvelger.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MapVelger:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/MapVelger_jar2</output-path>
+    <root id="archive" name="MapVelger.jar">
+      <element id="module-output" name="MapVelger" />
+    </root>
+  </artifact>
+</component>
