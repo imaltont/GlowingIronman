@@ -21,7 +21,7 @@ public class Maps
 
     public String getMaps() throws IOException {
         String maps = "";
-        Path mapPath = Paths.get("maps\\chooseMaps.txt");
+        Path mapPath = Paths.get("maps/chooseMaps.txt");
         Charset charset = Charset.forName("ISO-8859-1");
 
         try
@@ -48,13 +48,13 @@ public class Maps
     }
     public void updateMaps (List <String> maps) throws FileNotFoundException, UnsupportedEncodingException {
         //legge inn action listener ol imorgen for den knappen som skal fikse dette, + gjøre så denne alltid skriver over det som var i den gamle filen fra før, og må vel kanskje legge inn en variabel som kan holde styr på alle maps som står der for øyeblikket, slik at den vet om de har blitt oppdatert, og ikke trenger å lese av filen for hevr gang den skal inn med en ny runde.
-        PrintWriter writer = new PrintWriter("maps\\chooseMaps.txt", "ISO-8859-1");
+        PrintWriter writer = new PrintWriter("maps/chooseMaps.txt", "ISO-8859-1");
         for (String line : maps)
         {
             writer.println(line);
         }
         writer.close();
-        Path mapPath = Paths.get("maps\\chooseMaps.txt");
+        Path mapPath = Paths.get("maps/chooseMaps.txt");
         Charset charset = Charset.forName("ISO-8859-1");
 
         try

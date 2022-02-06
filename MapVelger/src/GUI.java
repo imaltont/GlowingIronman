@@ -62,7 +62,7 @@ public class GUI extends JPanel
         mapScroll = new JScrollPane(mapsToChoose);
         panel.add(mapScroll, gBC);
 
-        updateMaps = new JButton("Oppdater maps");
+        updateMaps = new JButton("Save categories");
         updateMaps.addActionListener(new UpdateMaps());
         updateMaps.setName("UpdateMaps");
         gBC.gridy = 1;
@@ -73,7 +73,7 @@ public class GUI extends JPanel
         optionPanel.setLayout(new GridBagLayout());
         this.add(optionPanel);
 
-        fromLabel = new JLabel("Fra runde: ");
+        fromLabel = new JLabel("From round: ");
         gBC.gridy = 0;
         gBC.gridx = 0;
         optionPanel.add(fromLabel, gBC);
@@ -84,7 +84,7 @@ public class GUI extends JPanel
         gBC.gridx = 1;
         optionPanel.add(fromRound, gBC);
 
-        toLabel = new JLabel("Til runde: ");
+        toLabel = new JLabel("To round: ");
         gBC.gridy = 1;
         gBC.gridx = 0;
         optionPanel.add(toLabel, gBC);
@@ -100,7 +100,7 @@ public class GUI extends JPanel
         gBC.gridx = 1;
         optionPanel.add(roundFormat, gBC);
 
-        setRounds = new JButton("Generer Maps");
+        setRounds = new JButton("Generate Categories");
         setRounds.addActionListener(new UpdateMaps());
         setRounds.setName("SetMaps");
         setRounds.setSize(5, 2);
@@ -159,7 +159,7 @@ public class GUI extends JPanel
                     try
                     {
                         //5 for antall maps i proleague format
-                        chosenMaps.setText(chosenMaps.getText() + "Runde: " + i + "\n" + getMaps(5) + "\n\n");
+                        chosenMaps.setText(chosenMaps.getText() + "Round: " + i + "\n" + getMaps(5) + "\n\n");
                     } catch (IOException e1)
                     {
                         e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -173,7 +173,7 @@ public class GUI extends JPanel
                     try
                     {
                         //5 for antall maps i proleague format
-                        chosenMaps.setText(chosenMaps.getText() + "Runde: " + i + "\n" + getMaps(1) + "\n\n");
+                        chosenMaps.setText(chosenMaps.getText() + "Round: " + i + "\n" + getMaps(1) + "\n\n");
                     } catch (IOException e1)
                     {
                         e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -187,7 +187,7 @@ public class GUI extends JPanel
                     try
                     {
                         //5 for antall maps i proleague format
-                        chosenMaps.setText(chosenMaps.getText() + "Runde: " + i + "\n" + "Proleague: " + "\n" + getMaps(4) + "All-kill: " + "\n" + getMaps(1) + "\n\n");
+                        chosenMaps.setText(chosenMaps.getText() + "Round: " + i + "\n" + "Proleague: " + "\n" + getMaps(4) + "All-kill: " + "\n" + getMaps(1) + "\n\n");
                     } catch (IOException e1)
                     {
                         e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
